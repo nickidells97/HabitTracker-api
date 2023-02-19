@@ -14,7 +14,7 @@ oAuth2Client.setCredentials({
 
 const calendar = google.calendar({version: 'v3', auth: oAuth2Client})
 
-// could use form here to send event
+//Should use form here to send event
 
 const eventStartTime = new Date()
 eventStartTime.setDate(eventStartTime.getDay() + 2)
@@ -29,12 +29,35 @@ const event = {
   description: 'Drink 1 litre right away',
   start: {
     dateTime: eventStartTime,
-    timeZone: 'America/NYC',
+    timeZone: 'America/New_York',
   },
   end: {
     dateTime: eventEndTime,
-    timeZone: 'America/NYC'
+    timeZone: 'America/New_York'//Found using this list: https://gist.github.com/diogocapela/12c6617fc87607d11fd62d2a4f42b02a
   },
   colorId: 1, // different color schemes for events in README
 }
 
+// This section is for if you want to query the calendar if you are busy or not
+
+calendar.freebusy.query({
+  resource: {
+    timeMin: eventStartTime,
+    timeMax: eventEndTime,
+    timeZone: 'America/New_York',
+    items: [{ id: 'primary' }], //Array of all calendars the user has access to
+  },
+}, (err, res) => {
+  if(err) return console.error('Free Busy Query Error: ', err)
+
+  const eventsArr = res.data.calendars.primary.busy
+
+  if(eventsArr.length === 0) return calendar.events.insert(
+    { calendarId: 'primary', resource: event },
+    err => {
+      if (err) return console.error('Calendar Event Creation Error: ', err)
+
+      return console.log('Calendar Event Created.')
+    })
+  return console.log(`Sorry I'm busy.`)
+})
