@@ -1,0 +1,22 @@
+{
+  "name": "habittracker-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickidells97/HabitTracker-api.git"
+  },
+  "author": "Nicholas Dellar-Fernandes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickidells97/HabitTracker-api/issues"
+  },
+  "homepage": "https://github.com/nickidells97/HabitTracker-api#readme",
+  "dependencies": {
+    "googleapis": "^111.0.0"
+  }
+}
