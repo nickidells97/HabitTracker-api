@@ -8,6 +8,14 @@ Copy the `.env.example` file to `.env.development` and fill in the necessary Pos
 
 # Google-Calendar-NodeJS-App
 
+-user: habittracktest@gmail.com
+-pass: Lighthouselabs@123
+
+- project number 812567341591
+- calendar ID: habittracktest@gmail.com
+
+
+
 # Helpful Stuff
 
 ## Google ColorID's For Calendar Events
