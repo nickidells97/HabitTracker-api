@@ -1,8 +1,12 @@
+## Creating The DB
+
+Use the `psql -U HabitTracker` command to login to the PostgreSQL server with the username `HabitTracker` and the password `HabitTracker`. This command **MUST** be run in a vagrant terminal, we are using the PostgreSQL installation provided in the vagrant environment.
+
+Create a database with the command `CREATE DATABASE habit_tracker;`.
+
+Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
+
 # Google-Calendar-NodeJS-App
-
-## Simple example app on how to use the google calendar api in NodeJs.
-
-I had a hard time finding a good tutorial or example on how to use the google calendar API in NodeJs. My biggest problem was with oAuth so I hope this helps someone out. If you have problems don't be afraid to open an issue.
 
 # Helpful Stuff
 

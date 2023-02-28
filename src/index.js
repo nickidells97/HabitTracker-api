@@ -1,5 +1,4 @@
 const { google } = require('googleapis')
-const { describe } = require('mocha')
 
 const { OAuth2 } = google.auth
 
