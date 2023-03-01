@@ -1,6 +1,6 @@
 ## Creating The DB
 
-Use the `psql -U HabitTracker` command to login to the PostgreSQL server with the username `HabitTracker` and the password `HabitTracker`. This command **MUST** be run in a vagrant terminal, we are using the PostgreSQL installation provided in the vagrant environment.
+Use the `psql -U development` command to login to the PostgreSQL server with the username `development` and the password `development`. This command **MUST** be run in a vagrant terminal, we are using the PostgreSQL installation provided in the vagrant environment.
 
 Create a database with the command `CREATE DATABASE habit_tracker;`.
 
@@ -13,8 +13,6 @@ Copy the `.env.example` file to `.env.development` and fill in the necessary Pos
 
 - project number 812567341591
 - calendar ID: habittracktest@gmail.com
-
-
 
 # Helpful Stuff
 
