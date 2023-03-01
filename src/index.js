@@ -1,15 +1,21 @@
-const express = require("express");
-const app = express();
-const port = 8080;
-const login = require;
+const PORT = process.env.PORT || 8080;
+const ENV = require("./environment");
 
-app.get("/", (req, res) => {
-  //handle route
+const server = require("http").Server(app);
+
+const WebSocket = require("ws");
+const wss = new WebSocket.Server({ server });
+
+wss.on("connection", socket => {
+  socket.onmessage = event => {
+    console.log(`Message Received: ${event.data}`);
+
+    if (event.data === "ping") {
+      socket.send(JSON.stringify("pong"));
+    }
+  };
 });
 
-app.listen(port, (err) => {
-  if (err) {
-    return console.log("ERROR", err);
-  }
-  console.log(`App listening on port ${port}!`);
+server.listen(PORT, () => {
+  console.log(`Listening on port ${PORT} in ${ENV} mode.`);
 });

@@ -6,6 +6,8 @@ Create a database with the command `CREATE DATABASE habit_tracker;`.
 
 Copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
 
+Create tables by using `npm run reset` which will delete the tables if they exist and readd them.
+
 # Google-Calendar-NodeJS-App
 
 -user: habittracktest@gmail.com

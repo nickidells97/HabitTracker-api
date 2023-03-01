@@ -13,7 +13,8 @@ const db = require("./db");
 const login = require("./routes/login");
 const register = require("./routes/register");
 const user = require("./routes/user");
-const habit = require("./routes/habit")
+const habit = require("./routes/habit");
+const days = require("./routes/days");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -38,9 +39,13 @@ module.exports = function application(
   app.use(helmet());
   app.use(bodyparser.json());
 
+  app.get("/", (req, res) => {
+    //handle route
+  });
+
   app.use("/api", days(db));
-  app.use("/api", appointments(db, actions.updateAppointment));
-  app.use("/api", interviewers(db));
+  // app.use("/api", appointments(db, actions.updateAppointment));
+  // app.use("/api", interviewers(db));
 
   if (ENV === "development" || ENV === "test") {
     Promise.all([

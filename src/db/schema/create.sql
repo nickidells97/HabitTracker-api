@@ -26,13 +26,13 @@ CREATE TABLE habits (
   note VARCHAR(255) NOT NULL
 );
 
--- CREATE TABLE notes (
---   id SERIAL PRIMARY KEY NOT NULL,
---   day_id INTEGER REFERENCES days(id) ON DELETE CASCADE,
---   positive_note VARCHAR(255) NOT NULL,
---   negative_note VARCHAR(255) NOT NULL,
---   habit_id INTEGER REFERENCES habits(id) ON DELETE CASCADE
--- );
+CREATE TABLE notes (
+  id SERIAL PRIMARY KEY NOT NULL,
+  day_id INTEGER REFERENCES days(id) ON DELETE CASCADE,
+  positive_note VARCHAR(255) NOT NULL,
+  negative_note VARCHAR(255) NOT NULL,
+  habit_id INTEGER REFERENCES habits(id) ON DELETE CASCADE
+);
 
 CREATE TABLE days_habits (
   id SERIAL PRIMARY KEY NOT NULL,

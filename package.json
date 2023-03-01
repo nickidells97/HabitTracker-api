@@ -18,8 +18,14 @@
   },
   "homepage": "https://github.com/nickidells97/HabitTracker-api#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "socket.io": "^4.6.1"
+    "helmet": "^6.0.1",
+    "pg": "^8.9.0",
+    "socket.io": "^4.6.1",
+    "ws": "^8.12.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
