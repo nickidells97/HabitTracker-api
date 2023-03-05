@@ -10,11 +10,11 @@ const app = express();
 
 const db = require("./db");
 
-const login = require("./routes/login");
-const register = require("./routes/register");
-const user = require("./routes/user");
-const habit = require("./routes/habit");
-const days = require("./routes/days");
+const login = require("./routes/api/login");
+const register = require("./routes/api/register");
+const user = require("./routes/api/user");
+const habit = require("./routes/api/habit");
+const days = require("./routes/api/days");
 
 function read(file) {
   return new Promise((resolve, reject) => {

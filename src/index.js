@@ -1,21 +1,31 @@
 const PORT = process.env.PORT || 8080;
 const ENV = require("./environment");
+const express = require("express");
+const app = express();
+const cors = require('cors')
+const errorHandler = require('../middleware/errorHandler');
 
-const server = require("http").Server(app);
+const root = require("./routes/root")
+const register = require("./routes/api/register")
+const login = require("./routes/api/login")
 
-const WebSocket = require("ws");
-const wss = new WebSocket.Server({ server });
+app.use(cors())
 
-wss.on("connection", socket => {
-  socket.onmessage = event => {
-    console.log(`Message Received: ${event.data}`);
+app.use(express.urlencoded({ extended: false }))
 
-    if (event.data === "ping") {
-      socket.send(JSON.stringify("pong"));
-    }
-  };
-});
+app.use(express.json());
 
-server.listen(PORT, () => {
+// app.use(express.static(path.join(__dirname, '/public')))
+
+
+// routes
+app.use("/", root)
+app.use("/register", register);
+app.use("/login", login)
+
+
+app.use(errorHandler);
+
+app.listen(PORT, () => {
   console.log(`Listening on port ${PORT} in ${ENV} mode.`);
 });
