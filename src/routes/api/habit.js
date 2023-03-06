@@ -4,4 +4,4 @@ router.get("/habit", (req,res) => {
   //handle route
 })
 
-module.exports = db
+module.exports = router;
