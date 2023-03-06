@@ -9,10 +9,14 @@ const root = require("./routes/root")
 const register = require("./routes/api/register")
 const login = require("./routes/api/login")
 
+// Cross Origin Resource Sharing
 app.use(cors())
 
+
+// Built in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }))
 
+// Built-in middleware for json
 app.use(express.json());
 
 // app.use(express.static(path.join(__dirname, '/public')))
