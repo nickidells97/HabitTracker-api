@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const root = require("./routes/root")
 const register = require("./routes/api/register")
 const login = require("./routes/api/login")
+const logout = require("./routes/api/logout")
 const refresh = require("./routes/api/refresh")
 const user = require("./routes/api/user")
 const habit = require("./routes/api/habit")
@@ -32,7 +33,9 @@ app.use(cookieParser());
 app.use("/", root)
 app.use("/register", register);
 app.use("/login", login);
-app.use("/refresh", refresh)
+app.use("/refresh", refresh);
+app.use("/logout", logout);
+
 
 // Verified routes
 app.use(verifyJWT);
