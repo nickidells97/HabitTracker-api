@@ -2,26 +2,33 @@ const PORT = process.env.PORT || 8080;
 const ENV = require("./environment");
 const express = require("express");
 const app = express();
-const cors = require('cors')
-const errorHandler = require('../middleware/errorHandler');
-const verifyJWT = require('../middleware/verifyJWT'); // 
-const cookieParser = require('cookie-parser');
+const cors = require("cors");
+const errorHandler = require("../middleware/errorHandler");
+const verifyJWT = require("../middleware/verifyJWT"); //
+const cookieParser = require("cookie-parser");
+const credentials = require("../middleware/credentials");
 
-const root = require("./routes/root")
-const register = require("./routes/api/register")
-const login = require("./routes/api/login")
-const logout = require("./routes/api/logout")
-const refresh = require("./routes/api/refresh")
-const user = require("./routes/api/user")
-const habit = require("./routes/api/habit")
+const root = require("./routes/root");
+const register = require("./routes/api/register");
+const login = require("./routes/api/login");
+const logout = require("./routes/api/logout");
+const refresh = require("./routes/api/refresh");
+const user = require("./routes/api/user");
+const habit = require("./routes/api/habit");
 
+// handle optiiions credentials chech -before CORS!
+// also fetch cookies credentials requirement
+app.use(credentials);
 
 // Cross Origin Resource Sharing
-app.use(cors())
-
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 // Built in middleware to handle urlencoded form data
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
 
 // Built-in middleware for json
 app.use(express.json());
@@ -30,20 +37,17 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Unverified routes
-app.use("/", root)
+app.use("/", root);
 app.use("/register", register);
 app.use("/login", login);
 app.use("/refresh", refresh);
 app.use("/logout", logout);
 
-
 // Verified routes
 app.use(verifyJWT);
-app.use("/user", user)
-app.use("/habit", habit)
+app.use("/user", user);
+app.use("/habit", habit);
 //
-
-
 
 app.use(errorHandler);
 

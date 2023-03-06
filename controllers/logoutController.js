@@ -17,7 +17,7 @@ const handleLogout = async (req, res) => {
   // Is refresh token in DB
   const foundUser = usersDB.users.find(person => person.refreshToken === refreshToken);
   if (!foundUser) {
-    res.clearCookie('jwt', { httpOnly: true });
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
     return res.sendStatus(204); 
   }
   // Delete refreshToken in DB
@@ -29,7 +29,7 @@ const handleLogout = async (req, res) => {
     JSON.stringify(usersDB.users)
   );
 
-  res.clearCookie('jwt', { httpOnly: true}); //secure: true - only serves on https ie: in production
+  res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true }); //secure: true - does not work in thunder client but necessary for use in chrome
   res.sendStatus(204)
 }
 
