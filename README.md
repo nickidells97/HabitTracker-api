@@ -8,32 +8,10 @@ Copy the `.env.example` file to `.env.development` and fill in the necessary Pos
 
 Create tables by using `npm run reset` which will delete the tables if they exist and readd them.
 
-# Google-Calendar-NodeJS-App
+## JWT Tokens
 
--user: habittracktest@gmail.com
--pass: Lighthouselabs@123
+Create a `.env` file in the root directory, and then populate it with the tokens that will be sent to you via discord. this is necessary for the login functionality to operate. 
 
-- project number 812567341591
-- calendar ID: habittracktest@gmail.com
+# Starting the server
 
-# Helpful Stuff
-
-## Google ColorID's For Calendar Events
-
-- Color: Blue | ID: 1
-- Color: Green | ID: 2
-- Color: Purple | ID: 3
-- Color: Red | ID: 4
-- Color: Yellow | ID: 5
-- Color: Orange | ID: 6
-- Color: Turquoise | ID: 7
-- Color: Gray | ID: 8
-- Color: Bold Blue | ID: 9
-- Color: Bold Green | ID: 10
-- Color: bold red | ID: 11
-
-# Youtube Tutorial
-
-In this video I show you how this project was created and why? We also go over what each line of code does.
-
-[Video Tutorial](https://www.youtube.com/watch?v=zrLf4KMs71E)
+Begin by typing `npm i` to install all dependencies in this repo. then, npm start to run the server. 

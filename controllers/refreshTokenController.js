@@ -26,7 +26,7 @@ const handleRefreshToken = (req, res) => {
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: '15m'}
       );
-      res.json({ accessToken })
+      res.json({ accessToken, "user": foundUser.username })
     }
   );
 }
