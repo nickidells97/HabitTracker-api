@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-[{"firstName":"Macky","lastName":"Mart","username":"MM_1","email":"MM1@gmail.com","password":"$2b$10$hrXNd.WPzEZN7ub9tZHzZe/sM4b0ZJyH8YeYewb9C/MXnYOdM9NDW"},{"firstName":"Mack","lastName":"Moe","username":"MM123","email":"MM123@gmail.com","password":"$2b$10$/3NFY8Db8P08/vQavVnv8eb0uURaAj4wezL3IkhULSRZJH44mGw4y","refreshToken":""}]
-=======
-[{"firstName":"Nicholas","lastName":"Dellar-Fernandes","username":"Nuttin","email":"ndelfern@live.ca","password":"$2b$10$H3qIu7u3oi374N5iz.k7cOvHd8HQ/IGGDmzjYO84yWDyn.bviEUCm","refreshToken":""}]
->>>>>>> 1b4fdcbe07e1580477296d81136bd3cd5bbebb5d
+[{"firstName":"Mack","lastName":"Moe","username":"MM123","email":"MM123@gmail.com","password":"$2b$10$/3NFY8Db8P08/vQavVnv8eb0uURaAj4wezL3IkhULSRZJH44mGw4y","refreshToken":""},{"firstName":"Macky","lastName":"Mart","username":"MM_1","email":"MM1@gmail.com","password":"$2b$10$hrXNd.WPzEZN7ub9tZHzZe/sM4b0ZJyH8YeYewb9C/MXnYOdM9NDW","refreshToken":""}]
