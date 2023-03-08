@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/index.js",
-    "reset": "psql -U development -d habit_tracker < ./src/db/schema/create.sql"
+    "reset": "psql -U development -d habit_tracker < ./src/db/schema/create.sql",
+    "seed": "psql -U development -d habit_tracker < ./src/db/schema/development.sql"
   },
   "repository": {
     "type": "git",
