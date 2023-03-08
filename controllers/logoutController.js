@@ -10,7 +10,7 @@ const path = require('path');
 const handleLogout = async (req, res) => {
   //On client, also delete the access token on the front end
   const cookies = req.cookies;
-  if (!cookies?.jwt)
+  if (!cookies)
     return res
       .sendStatus(204); // No content to send back
   const refreshToken = cookies.jwt;
