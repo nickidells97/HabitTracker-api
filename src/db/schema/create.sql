@@ -21,8 +21,10 @@ CREATE TABLE habits (
   body VARCHAR(255) NOT NULL,
   start_date VARCHAR(255) NOT NULL,
   end_date VARCHAR(255) NOT NULL, 
+  start_time VARCHAR(255) NOT NULL,
+  end_time VARCHAR(255) NOT NULL,
+  days VARCHAR(255) NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  name VARCHAR(255) NOT NULL,
   completed BOOLEAN NOT NULL
 );
 
