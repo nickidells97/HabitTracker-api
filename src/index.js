@@ -30,8 +30,6 @@ app.use(
   })
 );
 
-
-
 // Built in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }));
 
