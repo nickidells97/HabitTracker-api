@@ -49,7 +49,7 @@ app.use("/refresh", refresh);
 app.use("/logout", logout);
 
 // Verified routes
-app.use(verifyJWT);
+// app.use(verifyJWT);
 app.use("/user", user);
 //access db (line12) as a parameter in habit route
 app.use("/habit", habit(db));
