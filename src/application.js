@@ -40,7 +40,6 @@ module.exports = function application(
   app.use(bodyparser.json());
 
   app.get("/", (req, res) => {
-    //handle route
   });
 
   app.use("/api", days(db));
