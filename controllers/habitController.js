@@ -25,15 +25,37 @@ const addHabits = (habitBody) => {
       RETURNING *
     `
   
-   return db.query(queryString, queryParams)
-    .then((results) => {
-      return results.rows
-    })
-    .catch((err) => {
-      console.log(err.message)
-    })
+  return db.query(queryString, queryParams)
+  .then((results) => {
+    return results.rows
+  })
+  .catch((err) => {
+    console.log(err.message)
+  })
+};
+
+const addEvent = (eventBody) => {
+  const { unique_event_id, habit_id } = eventBody
+  const queryParams = [unique_event_id, habit_id]
+  const queryString = 
+    `
+      INSERT INTO events 
+      (unique_event_id, habit_id)
+      VALUES ($1, $2)
+      RETURNING *
+    `
+
+  return db.query(queryString, queryParams)
+  .then((results) => {
+    return results.rows
+  })
+  .catch((err) => {
+    console.log(err.message)
+  })
 };
 
 module.exports = {
   addHabits,
-   getHabits};
+  getHabits,
+  addEvent
+};
