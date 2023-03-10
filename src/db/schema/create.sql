@@ -21,6 +21,7 @@ CREATE TABLE habits (
   unique_event_id VARCHAR(255) NOT NULL,
   title VARCHAR(255) NOT NULL,
   body VARCHAR(255) NOT NULL,
+  category VARCHAR(255) NOT NULL,
   start VARCHAR(255) NOT NULL,
   end VARCHAR(255) NOT NULL, 
   backgroundColor VARCHAR(255) NOT NULL,

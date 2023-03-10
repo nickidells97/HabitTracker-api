@@ -20,8 +20,8 @@ const addHabits = (habitBody) => {
   const queryString =
     `
       INSERT INTO habits 
-      (unique_event_id, title, body, start, end, backgroundColor, color, daysSelected, user_id, completed)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+      (unique_event_id, title, body, category, start, end, backgroundColor, color, daysSelected, user_id, completed)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
       RETURNING *
     `
   
