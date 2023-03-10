@@ -19,7 +19,7 @@ const refresh = require("./routes/api/refresh");
 const user = require("./routes/api/user");
 const habit = require("./routes/api/habit");
 
-// handle optiiions credentials chech -before CORS!
+// handle options credentials check -before CORS!
 // also fetch cookies credentials requirement
 app.use(credentials);
 
@@ -41,13 +41,13 @@ app.use(cookieParser());
 
 // Unverified routes
 app.use("/", root);
-app.use("/register", register);
-app.use("/login", login);
+app.use("/register", register(db));
+app.use("/login", login(db));
 app.use("/refresh", refresh);
 app.use("/logout", logout);
 
 // Verified routes
-// app.use(verifyJWT);
+app.use(verifyJWT);
 app.use("/user", user);
 //access db (line12) as a parameter in habit route
 app.use("/habit", habit(db));
