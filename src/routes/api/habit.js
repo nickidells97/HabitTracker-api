@@ -7,17 +7,6 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     habitController.getHabits()
       .then(habits => res.send(habits))
-      // .then(res.send("hello"))
-    ///Working code
-    // db.query(
-    //   `
-    //   SELECT * from habits;
-    //   `
-    //   )
-    //   .then(({ rows: habits}) => {
-    //     res.json(habits)
-    //     res.send(res.json(habits))
-    //   });
   });
 
   router.post("/", (req,res) => {
@@ -25,6 +14,18 @@ module.exports = (db) => {
     habitController.addHabits({...req.body})
       .then(habit => {
         res.send(habit);
+      })
+      .catch(err => {
+        console.error(err);
+        res.send(err)
+      });
+  });
+
+  router.post("/event", (req,res) => {
+
+    habitController.addEvent({...req.body})
+      .then(event => {
+        res.send(event);
       })
       .catch(err => {
         console.error(err);
