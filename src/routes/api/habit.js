@@ -10,7 +10,6 @@ module.exports = (db) => {
   });
 
   router.post("/", (req,res) => {
-
     habitController.addHabits({...req.body})
       .then(habit => {
         res.send(habit);
