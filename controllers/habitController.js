@@ -15,12 +15,12 @@ const getHabits = () => {
 };
 
 const addHabits = (habitBody) => {
-  const {unique_event_id, title, body, start_date, end_date, start_time, end_time, days, user_id, completed} = habitBody
-  const queryParams = [unique_event_id, title, body, start_date, end_date, start_time, end_time, days, user_id, completed]
+  const {unique_event_id, title, body, start, end, backgroundColor, color, daysSelected, user_id, completed} = habitBody
+  const queryParams = [unique_event_id, title, body, start, end, backgroundColor, color, daysSelected, user_id, completed]
   const queryString =
     `
       INSERT INTO habits 
-      (unique_event_id, title, body, start_date, end_date, start_time, end_time, days, user_id, completed)
+      (unique_event_id, title, body, start, end, backgroundColor, color, daysSelected, user_id, completed)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       RETURNING *
     `

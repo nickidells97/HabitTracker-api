@@ -14,19 +14,22 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL
 );
 
+
+-- need foreign key
 CREATE TABLE habits (
   id SERIAL PRIMARY KEY NOT NULL,
   unique_event_id VARCHAR(255) NOT NULL,
   title VARCHAR(255) NOT NULL,
   body VARCHAR(255) NOT NULL,
-  start_date VARCHAR(255) NOT NULL,
-  end_date VARCHAR(255) NOT NULL, 
-  start_time VARCHAR(255) NOT NULL,
-  end_time VARCHAR(255) NOT NULL,
-  days VARCHAR(255) NOT NULL,
+  start VARCHAR(255) NOT NULL,
+  end VARCHAR(255) NOT NULL, 
+  backgroundColor VARCHAR(255) NOT NULL,
+  color VARCHAR(255) NOT NULL,
+  daysSelected VARCHAR(255) NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   completed BOOLEAN NOT NULL
 );
+
 
 -- CREATE TABLE notes (
 --   id SERIAL PRIMARY KEY NOT NULL,
