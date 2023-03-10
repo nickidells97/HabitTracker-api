@@ -1,6 +1,16 @@
 const router = require("express").Router();
 const registerController = require('../../../controllers/registerController')
 
-router.post('/', registerController.handleNewUser)
 
-module.exports = router;
+
+module.exports = (db) => {
+
+  router.get("/", (req,res) => {
+    registerController.getUsersByEmail()
+      .then(users => res.send(users))
+  });
+
+  router.post("/", registerController.handleNewUser);
+
+  return router;
+}
