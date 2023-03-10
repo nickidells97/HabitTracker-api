@@ -21,7 +21,7 @@ const habit = require("./routes/api/habit");
 
 // handle optiiions credentials chech -before CORS!
 // also fetch cookies credentials requirement
-// app.use(credentials);
+app.use(credentials);
 
 // Cross Origin Resource Sharing
 app.use(
@@ -29,8 +29,6 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
-
-
 
 // Built in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }));
