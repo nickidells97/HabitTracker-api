@@ -11,8 +11,8 @@ INSERT INTO habits (unique_event_id, title, body, start_date, end_date, start_ti
   ('coding20230309', 'Coding',  ' Practicing everyday to be a great developer', '2023-03-09', '2023-03-28', '18:00', '22:00', 'Monday,Tuesday' , 1, false ),
   ('coding20230319', 'Coding',  ' Practicing everyday to be a great developer', '2023-03-09', '2023-03-28', '23:00', '24:00', 'Thursday,Friday', 3, false );
 
-INSERT INTO events (unique_event_id, habits_id)
+INSERT INTO events (unique_event_id, habit_id)
   VALUES
-  ('111', 1)
-  ('999', 2)
+  ('111', 1),
+  ('999', 2),
   ('555', 3)
