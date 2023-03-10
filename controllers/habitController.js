@@ -21,7 +21,7 @@ const addHabits = (habitBody) => {
     `
       INSERT INTO habits 
       (unique_event_id, title, body, start_date, end_date, start_time, end_time, days, user_id, completed)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       RETURNING *
     `
   
