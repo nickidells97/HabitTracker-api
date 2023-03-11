@@ -55,13 +55,13 @@ const getEvents = () => {
 };
 
 const addEvent = (eventBody) => {
-  const { unique_event_id, habit_id } = eventBody
-  const queryParams = [unique_event_id, habit_id]
+  const { unique_event_id, habit_id, user_id, completed } = eventBody
+  const queryParams = [unique_event_id, habit_id, user_id, completed]
   const queryString = 
     `
       INSERT INTO events 
-      (unique_event_id, habit_id)
-      VALUES ($1, $2)
+      (unique_event_id, habit_id, user_id, completed)
+      VALUES ($1, $2, $3, $4)
       RETURNING *
     `
 
