@@ -1,6 +1,5 @@
 const db = require("../src/db");
 const bcrypt = require('bcrypt');
-
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -36,7 +35,7 @@ const handleLogin = async (req, res) => {
     // const currentUser = { ...foundUser, refreshToken };
     
     res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000}); //setting max age of cookie and using http only for security
-    res.json({ accessToken, "username": foundUser.username });
+    res.json({ accessToken, "user": foundUser.username, "avatar": foundUser.avatar, "id": foundUser.id });
       } else {
         res.sendStatus(401);
       }
