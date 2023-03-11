@@ -35,6 +35,15 @@ module.exports = (db) => {
         res.send(err)
       });
   });
+
+  router.delete("/:id", (req, res) => {
+    habitController.deleteHabit(req.params.id)
+      .then(event => {
+        res.send(event);
+        // res.status(204).json({});
+        console.log("request body", req.body);
+      });
+  })
   
   return router
 }

@@ -74,9 +74,26 @@ const addEvent = (eventBody) => {
   })
 };
 
+  const deleteHabit = (habit_id) => {
+    const queryParams =[habit_id];
+    const queryString = 
+    `DELETE FROM habits 
+      WHERE id = $1;
+    `;
+
+    return db.query(queryString, queryParams)
+    .then((results) => {
+      console.log("query sucessful");
+    })
+    .catch((err) => {
+      console.log(err.message);
+    })
+  }
+
 module.exports = {
   addHabits,
   getHabits,
+  deleteHabit,
   addEvent,
   getEvents
 };
