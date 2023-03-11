@@ -33,7 +33,8 @@ CREATE TABLE events (
   unique_event_id VARCHAR(255) NOT NULL,
   habit_id INTEGER REFERENCES habits(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-)
+  completed BOOLEAN NOT NULL 
+);
 
 -- CREATE TABLE notes (
 --   id SERIAL PRIMARY KEY NOT NULL,
