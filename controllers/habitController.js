@@ -34,6 +34,19 @@ const addHabits = (habitBody) => {
   })
 };
 
+const getEvents = () => {
+  return db
+  .query(
+    `
+    SELECT * from events;
+    `
+    )
+    .then((results) => {
+      console.log("RESULTS:", results.rows)
+      return results.rows
+    });
+};
+
 const addEvent = (eventBody) => {
   const { unique_event_id, habit_id } = eventBody
   const queryParams = [unique_event_id, habit_id]
@@ -57,5 +70,6 @@ const addEvent = (eventBody) => {
 module.exports = {
   addHabits,
   getHabits,
-  addEvent
+  addEvent,
+  getEvents
 };
