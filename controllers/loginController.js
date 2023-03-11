@@ -30,12 +30,25 @@ const handleLogin = async (req, res) => {
       process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: '4d'}
     );
-    // Saving refreshToken with current user (may not be necessary)
-    // const otherUsers = usersDB.users.filter(person => person.username !== foundUser.username);
-    // const currentUser = { ...foundUser, refreshToken };
+    const queryParams = [user, refreshToken];
+    const queryString =
+    `
+      UPDATE users
+      SET refresh_token = $2
+      WHERE username = $1
+      RETURNING *
+    `
+    return db.query(queryString, queryParams)
+    .then((results) => {
+      res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000}); //setting max age of cookie and using http only for security
+      res.json({ accessToken, "user": foundUser.username, "avatar": foundUser.avatar, "id": foundUser.id });
+      return results.rows
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
     
-    res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000}); //setting max age of cookie and using http only for security
-    res.json({ accessToken, "user": foundUser.username, "avatar": foundUser.avatar, "id": foundUser.id });
+    
       } else {
         res.sendStatus(401);
       }

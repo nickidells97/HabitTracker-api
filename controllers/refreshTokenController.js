@@ -5,13 +5,12 @@ require('dotenv').config();
 
 const handleRefreshToken = (req, res) => {
   const cookies = req.cookies;
-  console.log(cookies);
   if (!cookies)
     return res
       .sendStatus(401);
   const refreshToken = cookies.jwt;
   return db
-  .query(`SELECT * FROM users WHERE username = $1`, [user])
+  .query(`SELECT * FROM users WHERE refresh_token = $1`, [refreshToken])
   .then((userObject) => {
     const foundUser = userObject.rows[0]
   if (!foundUser) return res.sendStatus(403); //Forbidden

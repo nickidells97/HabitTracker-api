@@ -17,7 +17,7 @@ const getUsersByEmail = () => {
 
 const handleNewUser = async (req, res) => {
   const {firstName, lastName, user, email, pwd } = req.body;
-  console.log(req.body)
+  // console.log(req.body)
   if (!user || !pwd || !email)
     return res
       .status(400)

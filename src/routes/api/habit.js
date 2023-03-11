@@ -4,7 +4,7 @@ const habitController = require('../../../controllers/habitController')
 module.exports = (db) => {
 
   router.get("/", (req, res) => {
-    habitController.getHabits()
+    habitController.getHabits(req, res)
       .then(habits => res.send(habits))
   });
 

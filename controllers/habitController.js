@@ -1,17 +1,24 @@
 const router = require("express").Router();
 const db = require("../src/db");
 
-const getHabits = () => {
-  return db
-  .query(
-    `
-    SELECT * from habits;
-    `
-    )
-    .then((results) => {
-      console.log("RESULTS:", results.rows)
-      return results.rows
-    });
+const getHabits = async (req, res) => {
+  try {
+    const cookies = req.cookies;
+    if (!cookies) {
+      return res.sendStatus(401);
+    }
+    const refreshToken = cookies.jwt;
+    const userObject = await db.query(`SELECT * FROM users WHERE refresh_token = $1`, [refreshToken]);
+    if (userObject.rows.length === 0) {
+      throw new Error('User not found');
+    }
+    const foundUser = userObject.rows[0];
+    const results = await db.query(`SELECT * from habits WHERE user_id = $1`, [foundUser.id]);
+    return results.rows;
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
 };
 
 const addHabits = (habitBody) => {
@@ -42,7 +49,7 @@ const getEvents = () => {
     `
     )
     .then((results) => {
-      console.log("RESULTS:", results.rows)
+      // console.log("RESULTS:", results.rows)
       return results.rows
     });
 };
