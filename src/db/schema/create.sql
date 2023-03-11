@@ -31,7 +31,8 @@ CREATE TABLE habits (
 CREATE TABLE events (
   id SERIAL PRIMARY KEY NOT NULL,
   unique_event_id VARCHAR(255) NOT NULL,
-  habit_id INTEGER REFERENCES habits(id) ON DELETE CASCADE
+  habit_id INTEGER REFERENCES habits(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
 )
 
 -- CREATE TABLE notes (
