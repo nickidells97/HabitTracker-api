@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const habitController = require('../../../controllers/habitController')
 
-
 module.exports = (db) => {
 
   router.get("/", (req, res) => {
