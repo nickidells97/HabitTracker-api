@@ -21,7 +21,12 @@ module.exports = (db) => {
 
   router.get("/events", (req, res) => {
     habitController.getEvents(req, res)
-      .then(habits => res.send(habits))
+      .then(events => res.send(events))
+  });
+
+  router.get("/events/count", (req, res) => {
+    habitController.countUniqueEvents(req, res)
+      .then(events => res.send(events))
   });
 
   router.post("/events", (req,res) => {
