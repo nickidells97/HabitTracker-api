@@ -72,7 +72,12 @@ const countUniqueEvents = async (req, res) => {
       throw new Error('User not found');
     }
     const foundUser = userObject.rows[0];
-    const results = await db.query(`SELECT COUNT(DISTINCT unique_event_id) as event_count, habits.title from events JOIN habits ON habits.id = habit_id  WHERE events.user_id = $1 GROUP BY habits.title;`, [foundUser.id]);
+    const results = await db.query(`
+    SELECT 
+      COUNT(DISTINCT unique_event_id) as event_count, events.completed as event_completed, habits.title from events 
+      JOIN habits ON habits.id = habit_id  
+      WHERE events.user_id = $1 
+      GROUP BY habits.title, events.completed;`, [foundUser.id]);
     return results.rows;
   } catch (error) {
     console.error(error);
