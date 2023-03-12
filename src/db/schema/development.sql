@@ -9,10 +9,19 @@ INSERT INTO habits (title, body, start_date, end_date, start_time, end_time, day
   VALUES
   ('Running', 'I want to run 3 times per week', '2023-03-09', '2023-03-28', '07:00', '08:00', 'Monday,Wednesday' , 2, false),
   ('Coding',  ' Practicing everyday to be a great developer', '2023-03-09', '2023-03-28', '18:00', '22:00', 'Monday,Tuesday' , 1, false ),
+  ('Shooting',  'Practicing my basketball shot', '2023-03-09', '2023-03-28', '18:00', '22:00', 'Monday,Tuesday' , 1, false ),
   ('Coding',  ' Practicing everyday to be a great developer', '2023-03-09', '2023-03-28', '23:00', '24:00', 'Thursday,Friday', 3, false );
 
 INSERT INTO events (unique_event_id, habit_id, user_id, completed)
   VALUES
-  ('111', 1, 1, false),
-  ('999', 2, 2, true),
-  ('555', 3, 3, false)
+  ('111', 2, 1, true),
+  ('123', 2, 1, false),
+  ('860', 2, 1, false),
+  ('221', 2, 1, false),
+  ('221', 3, 1, true),
+  ('221', 3, 1, true),
+  ('221', 3, 1, true),
+  ('221', 3, 1, false),
+  ('999', 1, 2, true),
+  ('555', 4, 3, false)
+
