@@ -20,7 +20,7 @@ module.exports = (db) => {
   });
 
   router.get("/events", (req, res) => {
-    habitController.getEvents()
+    habitController.getEvents(req, res)
       .then(habits => res.send(habits))
   });
 
