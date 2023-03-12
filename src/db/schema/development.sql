@@ -17,11 +17,12 @@ INSERT INTO events (unique_event_id, habit_id, user_id, completed)
   ('111', 2, 1, true),
   ('123', 2, 1, false),
   ('860', 2, 1, false),
-  ('221', 2, 1, false),
-  ('221', 3, 1, true),
-  ('221', 3, 1, true),
-  ('221', 3, 1, true),
-  ('221', 3, 1, false),
+  ('1', 2, 1, false),
+  ('2', 3, 1, true),
+  ('3', 3, 1, true),
+  ('4', 3, 1, true),
+  ('5', 3, 1, false),
   ('999', 1, 2, true),
   ('555', 4, 3, false)
 
+-- SELECT COUNT(DISTINCT unique_event_id) from events GROUP BY habit_id;
