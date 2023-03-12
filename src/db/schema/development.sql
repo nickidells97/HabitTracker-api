@@ -1,7 +1,7 @@
 INSERT INTO users (avatar, first_name, last_name, username, email, password)
   VALUES
   ('https://i.imgur.com/LpaY82x.png', 'Mack', 'Martin', 'MM123', 'Mack@gmail.com', '$2b$10$e.bwmNpnkR.N4HZ1SD8SHuSO8y9VxSbPSpJrZudsnQhEGcHn95wL6'),
-  ('https://i.imgur.com/LpaY82x.png', 'Jevaughn', 'Williams', 'jevaughn.williamsx@gmail.com', 'Jevaughn' , '$2b$10$/3NFY8Db8P08/vQavVnv8eb0uURaAj4wezL3IkhULSRZJH44mGw4y'),
+  ('https://i.imgur.com/LpaY82x.png', 'Jevaughn', 'Williams', 'jevaughn', 'Jevaughn.williamsx@gmail.com' , '$2a$12$E0xlfL9aQOzca.34kndJZ.Ea8E8bOaj0dV9519vLRbZULRco9y3wC'),
   ('https://i.imgur.com/LpaY82x.png', 'Nicholas', 'Dellar-Fernandes', 'Nuttin', 'ndelfern@live.ca', '$2b$10$H3qIu7u3oi374N5iz.k7cOvHd8HQ/IGGDmzjYO84yWDyn.bviEUCm');
 
 
