@@ -36,12 +36,8 @@ const addHabits = async (habitBody) => {
     return results.rows;
   } catch (error) {
     console.error(error);
-    res.sendStatus(500);
+    throw new Error("Failed to add event"); // throw an error instead of sending 500 status code
   }
-  return db.query(queryString, queryParams)
-  .then((results) => {
-    return results.rows
-  })
 };
 
 const getEvents = async (req, res) => {
@@ -60,7 +56,7 @@ const getEvents = async (req, res) => {
     return results.rows;
   } catch (error) {
     console.error(error);
-    res.sendStatus(500);
+    throw new Error("Failed to add event"); // throw an error instead of sending 500 status code
   }
 }
 
