@@ -60,6 +60,26 @@ const getEvents = async (req, res) => {
   }
 }
 
+const countUniqueEvents = async (req, res) => {
+  try {
+    const cookies = req.cookies;
+    if (!cookies) {
+      return res.sendStatus(401);
+    }
+    const refreshToken = cookies.jwt;
+    const userObject = await db.query(`SELECT * FROM users WHERE refresh_token = $1`, [refreshToken]);
+    if (userObject.rows.length === 0) {
+      throw new Error('User not found');
+    }
+    const foundUser = userObject.rows[0];
+    const results = await db.query(`SELECT COUNT(DISTINCT unique_event_id) as event_count, habits.title from events JOIN habits ON habits.id = habit_id  WHERE events.user_id = $1 GROUP BY habits.title;`, [foundUser.id]);
+    return results.rows;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to add event"); // throw an error instead of sending 500 status code
+  }
+}
+
 const addEvent = async (eventBody) => {
   try {
     const { unique_event_id, habit_id, user_id, completed } = eventBody
@@ -100,5 +120,6 @@ module.exports = {
   getHabits,
   deleteHabit,
   addEvent,
-  getEvents
+  getEvents,
+  countUniqueEvents
 };
