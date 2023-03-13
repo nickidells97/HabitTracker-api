@@ -1,29 +1,14 @@
 const db = require("../src/db");
 const bcrypt = require("bcrypt");
 
-const getUsersByEmail = () => {
-  return db
-  .query(
-    `
-    SELECT email from users;
-    `
-    )
-    .then((results) => {
-      console.log(results.rows);
-      return results.rows
-    });
-};
-
 
 const handleNewUser = async (req, res) => {
-  const {firstName, lastName, user, email, pwd } = req.body;
-  // console.log(req.body)
+  const {avatar, firstName, lastName, user, email, pwd } = req.body;
   if (!user || !pwd || !email)
     return res
       .status(400)
       .json({ message: "Username, email and password are required." });
 
-  const avatar = 'https://i.imgur.com/LpaY82x.png'; //This needs to be dynamic field
   //check for duplicate usernames in db
   
   //Hash password
@@ -48,12 +33,4 @@ const handleNewUser = async (req, res) => {
     })
 };
 
-module.exports = { handleNewUser, getUsersByEmail };
-
-// usersDB.setUsers([...usersDB.users, newUser]);
-// await fsPromises.writeFile(
-//   path.join(__dirname, "..", "data", "users.json"),
-//   JSON.stringify(usersDB.users)
-// );
-// console.log(usersDB.users);
-// res.status(201).json({ success: `New user ${user} created!` });
+module.exports = { handleNewUser };
