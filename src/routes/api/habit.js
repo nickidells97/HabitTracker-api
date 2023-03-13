@@ -19,6 +19,17 @@ module.exports = (db) => {
       });
   });
 
+  router.post("/Edit", (req,res) => {
+    habitController.editHabits({...req.body})
+      .then(habit => {
+        res.send(habit);
+      })
+      .catch(err => {
+        console.error(err);
+        res.send(err)
+      });
+  });
+
   router.get("/events", (req, res) => {
     habitController.getEvents(req, res)
       .then(events => res.send(events))

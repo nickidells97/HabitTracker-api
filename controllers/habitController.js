@@ -8,12 +8,17 @@ const getHabits = async (req, res) => {
       return res.sendStatus(401);
     }
     const refreshToken = cookies.jwt;
-    const userObject = await db.query(`SELECT * FROM users WHERE refresh_token = $1`, [refreshToken]);
+    const userObject = await db.query(
+      `SELECT * FROM users WHERE refresh_token = $1`,
+      [refreshToken]
+    );
     if (userObject.rows.length === 0) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
     const foundUser = userObject.rows[0];
-    const results = await db.query(`SELECT * from habits WHERE user_id = $1`, [foundUser.id]);
+    const results = await db.query(`SELECT * from habits WHERE user_id = $1`, [
+      foundUser.id,
+    ]);
     return results.rows;
   } catch (error) {
     console.error(error);
@@ -23,20 +28,85 @@ const getHabits = async (req, res) => {
 
 const addHabits = async (habitBody) => {
   try {
-    const {title, body, start_date, end_date, start_time, end_time, days, user_id, completed} = habitBody
-    const queryParams = [title, body, start_date, end_date, start_time, end_time, days, user_id, completed]
-    const queryString =
-      `
+    const {
+      title,
+      body,
+      start_date,
+      end_date,
+      start_time,
+      end_time,
+      days,
+      user_id,
+      completed,
+    } = habitBody;
+    const queryParams = [
+      title,
+      body,
+      start_date,
+      end_date,
+      start_time,
+      end_time,
+      days,
+      user_id,
+      completed,
+    ];
+    const queryString = `
         INSERT INTO habits 
         (title, body, start_date, end_date, start_time, end_time, days, user_id, completed)
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
         RETURNING *
-      `
+      `;
     const results = await db.query(queryString, queryParams);
     return results.rows;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to add event"); // throw an error instead of sending 500 status code
+  }
+};
+
+const editHabits = async (habitBody) => {
+  try {
+    const {
+      title,
+      body,
+      start_date,
+      end_date,
+      start_time,
+      end_time,
+      days,
+      user_id,
+      completed,
+    } = habitBody;
+    const queryParams = [
+      title,
+      body,
+      start_date,
+      end_date,
+      start_time,
+      end_time,
+      days,
+      user_id,
+      completed,
+    ];
+    const queryString = `
+      UPDATE habits 
+      SET title = $1, 
+          body = $2, 
+          start_date = $3, 
+          end_date = $4, 
+          start_time = $5, 
+          end_time = $6, 
+          days = $7, 
+          completed = $9
+      WHERE user_id = $8
+      RETURNING *
+      `;
+
+    const results = await db.query(queryString, queryParams);
+    return results.rows;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to edit event"); // throw an error instead of sending 500 status code
   }
 };
 
@@ -47,18 +117,23 @@ const getEvents = async (req, res) => {
       return res.sendStatus(401);
     }
     const refreshToken = cookies.jwt;
-    const userObject = await db.query(`SELECT * FROM users WHERE refresh_token = $1`, [refreshToken]);
+    const userObject = await db.query(
+      `SELECT * FROM users WHERE refresh_token = $1`,
+      [refreshToken]
+    );
     if (userObject.rows.length === 0) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
     const foundUser = userObject.rows[0];
-    const results = await db.query(`SELECT * from events WHERE user_id = $1`, [foundUser.id]);
+    const results = await db.query(`SELECT * from events WHERE user_id = $1`, [
+      foundUser.id,
+    ]);
     return results.rows;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to add event"); // throw an error instead of sending 500 status code
   }
-}
+};
 
 const countUniqueEvents = async (req, res) => {
   try {
@@ -67,35 +142,40 @@ const countUniqueEvents = async (req, res) => {
       return res.sendStatus(401);
     }
     const refreshToken = cookies.jwt;
-    const userObject = await db.query(`SELECT * FROM users WHERE refresh_token = $1`, [refreshToken]);
+    const userObject = await db.query(
+      `SELECT * FROM users WHERE refresh_token = $1`,
+      [refreshToken]
+    );
     if (userObject.rows.length === 0) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
     const foundUser = userObject.rows[0];
-    const results = await db.query(`
+    const results = await db.query(
+      `
     SELECT 
       COUNT(DISTINCT unique_event_id) as event_count, events.completed, habits.title from events 
       JOIN habits ON habits.id = habit_id  
       WHERE events.user_id = $1 
-      GROUP BY habits.title, events.completed;`, [foundUser.id]);
+      GROUP BY habits.title, events.completed;`,
+      [foundUser.id]
+    );
     return results.rows;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to add event"); // throw an error instead of sending 500 status code
   }
-}
+};
 
 const addEvent = async (eventBody) => {
   try {
-    const { unique_event_id, habit_id, user_id, completed } = eventBody
-    const queryParams = [unique_event_id, habit_id, user_id, completed]
-    const queryString = 
-    `
+    const { unique_event_id, habit_id, user_id, completed } = eventBody;
+    const queryParams = [unique_event_id, habit_id, user_id, completed];
+    const queryString = `
       INSERT INTO events 
       (unique_event_id, habit_id, user_id, completed)
       VALUES ($1, $2, $3, $4)
       RETURNING *
-    `
+    `;
     const results = await db.query(queryString, queryParams);
     return results.rows;
   } catch (error) {
@@ -104,21 +184,21 @@ const addEvent = async (eventBody) => {
   }
 };
 
-  const deleteHabit = (habit_id) => {
-    const queryParams =[habit_id];
-    const queryString = 
-    `DELETE FROM habits 
+const deleteHabit = (habit_id) => {
+  const queryParams = [habit_id];
+  const queryString = `DELETE FROM habits 
       WHERE id = $1;
     `;
 
-    return db.query(queryString, queryParams)
+  return db
+    .query(queryString, queryParams)
     .then((results) => {
       console.log("query sucessful");
     })
     .catch((err) => {
       console.log(err.message);
-    })
-  }
+    });
+};
 
 module.exports = {
   addHabits,
@@ -126,5 +206,6 @@ module.exports = {
   deleteHabit,
   addEvent,
   getEvents,
-  countUniqueEvents
+  countUniqueEvents,
+  editHabits,
 };
