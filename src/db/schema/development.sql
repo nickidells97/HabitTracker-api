@@ -8,10 +8,11 @@ INSERT INTO users (avatar, first_name, last_name, username, email, password)
 INSERT INTO habits (title, body, start_date, end_date, start_time, end_time, days, user_id, completed)
   VALUES
   ('Running', 'I want to run 3 times per week', '2023-03-09', '2023-03-28', '07:00', '08:00', 'Monday,Wednesday' , 2, false),
-  ('Coding',  ' Practicing everyday to be a great developer', '2023-04-16', '2023-03-28', '18:00', '22:00', 'Monday,Tuesday' , 1, false ),
+  ('Coding',  ' Practicing everyday to be a great developer', '2023-03-16', '2023-05-28', '18:00', '22:00', 'Monday,Tuesday' , 1, false ),
   ('Shooting',  'Practicing my basketball shot', '2023-03-16', '2023-04-16', '18:00', '22:00', 'Wednesday,Friday' , 1, false ),
   ('Exercise',  'Work out atleast an hour', '2023-03-15', '2023-04-15', '18:00', '22:00', 'Saturday,Sunday' , 1, false ),
   ('Coding',  ' Practicing everyday to be a great developer', '2023-03-09', '2023-03-28', '23:00', '24:00', 'Thursday,Friday', 3, false );
+  ('Read More',  'Read atleast 2 hours a week', '2023-01-01', '2023-02-27', '20:00', '21:00', 'Saturday,Sunday' , 1, false ),
 
 INSERT INTO events (unique_event_id, habit_id, user_id, completed)
   VALUES
@@ -31,5 +32,13 @@ INSERT INTO events (unique_event_id, habit_id, user_id, completed)
   ( 15027, 2, 1, true ),  ( 46058, 4, 1, true ),
   ( 81327, 2, 1, false ), ( 36853, 3, 1, false ),
   ( 49376, 4, 1, false ), ( 31589, 4, 1, false ),
+  ( 100, 6, 1, true ), ( 101, 6, 1, true ),
+  ( 102, 6, 1, true ), ( 104, 6, 1, false ),
+  ( 103, 6, 1, true ), ( 105, 6, 1, true ),
+  ( 106, 6, 1, true ), ( 107, 6, 1, false ),
+  ( 108, 6, 1, true ), ( 109, 6, 1, true ),
+  ( 110, 6, 1, true ), ( 111, 6, 1, false ),
+  ( 112, 6, 1, true ), ( 113, 6, 1, true ),
+  ( 114, 6, 1, true ), ( 115, 6, 1, false ),
   ('999', 1, 2, true),
   ('555', 4, 3, false)
