@@ -11,8 +11,8 @@ INSERT INTO habits (title, body, start_date, end_date, start_time, end_time, day
   ('Coding',  ' Practicing everyday to be a great developer', '2023-03-16', '2023-05-28', '18:00', '22:00', 'Monday,Tuesday' , 1, false ),
   ('Shooting',  'Practicing my basketball shot', '2023-03-16', '2023-04-16', '18:00', '22:00', 'Wednesday,Friday' , 1, false ),
   ('Exercise',  'Work out atleast an hour', '2023-03-15', '2023-04-15', '18:00', '22:00', 'Saturday,Sunday' , 1, false ),
-  ('Coding',  ' Practicing everyday to be a great developer', '2023-03-09', '2023-03-28', '23:00', '24:00', 'Thursday,Friday', 3, false );
-  ('Read More',  'Read atleast 2 hours a week', '2023-01-01', '2023-02-27', '20:00', '21:00', 'Saturday,Sunday' , 1, false ),
+  ('Coding',  ' Practicing everyday to be a great developer', '2023-03-09', '2023-03-28', '23:00', '24:00', 'Thursday,Friday', 3, false ),
+  ('Read More',  'Read atleast 2 hours a week', '2023-01-01', '2023-02-27', '20:00', '21:00', 'Saturday,Sunday' , 1, false );
 
 INSERT INTO events (unique_event_id, habit_id, user_id, completed)
   VALUES
